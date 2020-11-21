@@ -1,22 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { useDimensions } from "@react-native-community/hooks";
+
+import Navigator from "./App/routes/HomeStack";
 
 export default function App() {
-  let x = 1;
-  console.log("App executed!");
+  const { height, width } = useDimensions().window;
+  const landscape = width > height;
+  const portrait = !landscape;
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <Text>Hello There, you penis!</Text>
-      <StatusBar style="auto" />
-    </SafeAreaView>
-  );
+  return <Navigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "dodgerblue",
-  },
-});
